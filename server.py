@@ -7,10 +7,12 @@ app = Flask(__name__)
 def detect_emotion():
     text = request.args.get('textToAnalyze')
 
+    # Error handling for blank input
     if text is None or text.strip() == "":
         return "Invalid input", 400
 
     result = emotion_detector(text)
+
     return jsonify(result)
 
 if __name__ == "__main__":
